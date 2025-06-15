@@ -61,7 +61,7 @@ void PhoneBook::search() {
 	while (true) {
 		std::cout << "enter the index of which you want to inspect: ";
 		size_t i;
-		if(std::cin >> i && i < 8)
+		if(std::cin >> i && i < 8 && !cs[i].is_empty())
 		{
 			cs[i] >> std::cout;
 			break;
