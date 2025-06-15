@@ -1,6 +1,6 @@
-SOURCE := Contact.cpp PhoneBook.cpp main.cpp
+SOURCE := Account.cpp tests.cpp
 
-NAME := phonebook
+NAME := global_banksters_united
 
 all: $(NAME)
 
