@@ -1,6 +1,5 @@
 #include "Account.hpp"
 #include <ctime>
-#include <iomanip>
 #include <iostream>
 
 int Account::_nbAccounts = 0;
@@ -25,8 +24,7 @@ void Account::displayAccountsInfos( void ) {
               << std::endl;
 }
 
-Account::Account(int initial_deposit) {
-	_amount = initial_deposit;
+Account::Account(int initial_deposit): _amount(initial_deposit) {
 	_totalAmount += _amount;
 	_accountIndex = _nbAccounts++;
 	_displayTimestamp();
@@ -84,16 +82,7 @@ Account::~Account() {
 
 void Account::_displayTimestamp() {
 	std::time_t t = std::time(NULL);
-	std::tm tm = *std::localtime(&t);
-	std::cout << "[" << tm.tm_year + 1900;
-	std::cout << std::setw(2) << std::setfill('0');
-	std::cout << tm.tm_mon;
-	std::cout << std::setw(2) << std::setfill('0');
-	std::cout << tm.tm_mday << "_";
-	std::cout << std::setw(2) << std::setfill('0');
-	std::cout << tm.tm_hour;
-	std::cout << std::setw(2) << std::setfill('0');
-	std::cout << tm.tm_min;
-	std::cout << std::setw(2) << std::setfill('0');
-	std::cout << tm.tm_sec << "] ";
+	char time_str[100];
+	if (std::strftime(time_str, sizeof(time_str), "%Y%m%d_%H%M%S ", std::localtime(&t)))
+		std::cout << time_str;
 }

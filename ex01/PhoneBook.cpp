@@ -1,52 +1,15 @@
 #include "PhoneBook.h"
+#define SAFE_GETLINE(label, func) { while (true) { std::cout << label;std::getline(std::cin, input);if (cs[cursor].func(input)) { break; } std::cerr << "invalid input. try again" << std::endl; } input.clear(); }
 
-PhoneBook::PhoneBook() {
-	cursor = 0;
-}
+PhoneBook::PhoneBook(): cursor(0) {}
 
 void PhoneBook::add() {
 	std::string input;
-
-	while (true) {
-		std::cout << "First Name: ";
-		std::getline(std::cin, input);
-		if (cs[cursor].setFirstName(input))
-			break;
-		std::cerr << "invalid input. try again" << std::endl;
-	}
-	input.clear();
-	while (true) {
-		std::cout << "Last Name: ";
-		std::getline(std::cin, input);
-		if (cs[cursor].setLastName(input))
-			break;
-		std::cerr << "invalid input. try again" << std::endl;
-	}
-	input.clear();
-	while (true) {
-		std::cout << "Nickname: ";
-		std::getline(std::cin, input);
-		if (cs[cursor].setNickname(input))
-			break;
-		std::cerr << "invalid input. try again" << std::endl;
-	}
-	input.clear();
-	while (true) {
-		std::cout << "Phone Number: ";
-		std::getline(std::cin, input);
-		if (cs[cursor].setPhoneNumber(input))
-			break;
-		std::cerr << "invalid input. try again" << std::endl;
-	}
-	input.clear();
-	while (true) {
-		std::cout << "Darkest Secret: ";
-		std::getline(std::cin, input);
-		if (cs[cursor].setDarkestSecret(input))
-			break;
-		std::cerr << "invalid input. try again" << std::endl;
-	}
-	input.clear();
+	SAFE_GETLINE("First Name: ", setFirstName)
+	SAFE_GETLINE("Last Name: ", setLastName)
+	SAFE_GETLINE("Nickname: ", setNickname)
+	SAFE_GETLINE("Phone Number: ", setPhoneNumber)
+	SAFE_GETLINE("Darkest Secret: ", setDarkestSecret)
 	cursor = (cursor + 1) % 8;
 }
 

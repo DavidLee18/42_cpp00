@@ -11,6 +11,8 @@ class Contact {
 		std::string nickname;
 		std::string phone_number;
 		std::string darkest_secret;
+		bool setMember(std::string&, const std::string&);
+		void print_simple_field(const std::string&) const;
 
 	public:
 		Contact();
@@ -19,9 +21,9 @@ class Contact {
 		bool setNickname(const std::string&);
 		bool setPhoneNumber(const std::string&);
 		bool setDarkestSecret(const std::string&);
-		void print_simple();
-		std::ostream& operator>>(std::ostream&);
-		bool is_empty();
+		void print_simple() const;
+		std::ostream& operator>>(std::ostream&) const;
+		bool is_empty() const;
 };
 
 #endif

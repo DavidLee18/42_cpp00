@@ -1,5 +1,6 @@
 #include <cctype>
 #include <iostream>
+#include <string>
 
 int main(int argc, char **argv)
 {
@@ -7,13 +8,14 @@ int main(int argc, char **argv)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
 	{
+		std::string word;
 		for (int i = 1; i < argc; i++) {
-			for (int j = 0; argv[i][j]; j++) {
-				if(std::isalpha(static_cast<unsigned char>(argv[i][j]))
-				&& std::islower(static_cast<unsigned char>(argv[i][j])))
-					std::cout << static_cast<char>(std::toupper(static_cast<unsigned char>(argv[i][j])));
+			word = argv[i];
+			for (size_t j = 0; j < word.length(); j++) {
+				if (std::islower((unsigned char)word[j]))
+					std::cout << (char)std::toupper((unsigned char)word[j]);
 				else
-					std::cout << argv[i][j];
+					std::cout << word[j];
 			}
 		}
 		std::cout << std::endl;
