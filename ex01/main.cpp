@@ -2,10 +2,8 @@
 
 int main() {
 	PhoneBook p;
-	std::string input;
-	while (true) {
-		std::cout << "PhoneBook > ";
-		std::getline(std::cin, input);
+	std::cout << "PhoneBook > ";
+	for (std::string input; std::getline(std::cin, input); ) {
 		if (input == "ADD")
 			p.add();
 		else if (input == "SEARCH")
