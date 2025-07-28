@@ -1,5 +1,18 @@
 #include "PhoneBook.h"
-#define SAFE_GETLINE(label, func) { while (true) { std::cout << label;std::getline(std::cin, input);if (cs[cursor].func(input)) { break; } if (std::cin.eof()) { std::exit(1); } std::cerr << "invalid input. try again" << std::endl; } input.clear(); }
+#define SAFE_GETLINE(label, func) { \
+	while (true) { \
+		std::cout << label; \
+		std::getline(std::cin, input); \
+		if (cs[cursor].func(input)) { \
+			break; \
+		} \
+		if (std::cin.eof()) { \
+			std::exit(1); \
+		} \
+		std::cerr << "invalid input. try again" << std::endl; \
+	} \
+	input.clear(); \
+}
 
 PhoneBook::PhoneBook(): cursor(0) {}
 
